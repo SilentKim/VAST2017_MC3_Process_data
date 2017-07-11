@@ -56,21 +56,20 @@ def gene_rgb_img(data_list, path_prefix):
     for i in range(6):
         for j in range(6):
             for k in range(6):
-                if(i!=j and i!=k and j!=k):
-                    img = np.zeros((width, height, channels), np.uint8)  # generate a gray image
-                    for row in data_list:
-                        if (row[0] == 'X'): continue
-                        x = int(row[0])
-                        y = int(row[1])
-                        # access a pixel from red channel
-                        img.itemset((y, x, 2), row[i+offset])
-                        # access a pixel from green channel
-                        img.itemset((y, x, 1), row[j+offset])
-                        # modify a pixel from blue channel
-                        img.itemset((y, x, 0), row[k+offset])
-                    filename = "b"+str(i+1)+"b"+str(j+1)+'b'+str(k+1)+".jpg"
-                    cv2.imwrite(path_prefix+filename,img)
-                    print filename+" saved."
+                img = np.zeros((width, height, channels), np.uint8)  # generate a gray image
+                for row in data_list:
+                    if (row[0] == 'X'): continue
+                    x = int(row[0])
+                    y = int(row[1])
+                    # access a pixel from red channel
+                    img.itemset((y, x, 2), row[i + offset])
+                    # access a pixel from green channel
+                    img.itemset((y, x, 1), row[j + offset])
+                    # modify a pixel from blue channel
+                    img.itemset((y, x, 0), row[k + offset])
+                filename = "b" + str(i + 1) + "b" + str(j + 1) + 'b' + str(k + 1) + ".jpg"
+                cv2.imwrite(path_prefix + filename, img)
+                print filename + " saved."
 
 if __name__ == '__main__':
     filename_list = ['image01_2014_03_17.csv','image02_2014_08_24.csv','image03_2014_11_28.csv','image04_2014_12_30.csv','image05_2015_02_15.csv','image06_2015_06_24.csv','image07_2015_09_12.csv','image08_2015_11_15.csv','image09_2016_03_06.csv','image10_2016_06_26.csv','image11_2016_09_06.csv','image12_2016_12_19.csv']
